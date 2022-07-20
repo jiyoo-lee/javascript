@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework</title>
+    <style>
+
+    
+    </style>
+    <script>
+    
+    </script>
+</head>
+<body>
+    <div class = "menu_div">    
+    </div>
+    
+</body>
+<script>
+const banners = [
+    {
+     "p_title":"지마켓",
+     "p_img":"./logo_quick_01.png",
+     "p_link":"https://www.gmarket.co.kr/"
+    },
+    {
+     "p_title":"옥션",
+     "p_img":"./logo_quick_02.png",
+     "p_link":"http://www.auction.co.kr/"
+    },
+    {
+     "p_title":"하프클럽",
+     "p_img":"./logo_quick_03.png",
+     "p_link":"http://www.halfclub.com/"
+    },
+    {
+     "p_title":"11번가",
+     "p_img":"./logo_quick_04.png",
+     "p_link":"https://www.11st.co.kr/"
+    },
+    {
+     "p_title":"위메프",
+     "p_img":"./logo_quick_05.png",
+     "p_link":"https://front.wemakeprice.com/"
+    },
+    {
+     "p_title":"쿠팡",
+     "p_img":"./logo_quick_06.png",
+     "p_link":"https://www.coupang.com/"
+    }
+];
+
+
+    var mkElements = document.getElementById("menu_div");
+    var imgsrc, titles;
+    var link, linkText;
+    var i;
+    for(i =0; i < banners.length; i++) {
+        
+        var link = document.createElement("a");
+        link.setAttribute('href',banners[i].p_link);
+        link.setAttribute('title',banners[i].p_title);
+        document.body.appendChild(link);
+        
+        imgsrc = document.createElement("img");
+        imgsrc.setAttribute('src', banners[i].p_img);
+        link.append(imgsrc);
+
+    }
+
+
+
+
+
+
+
+</script>
+</html>
+
