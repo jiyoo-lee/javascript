@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>jQuery AJAX 3일차(중급문법)- 확장 함수2 - 상속 + api 연동</title>
+<script src = "./jquery.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script>
+	
+	//backend : jQuery(핸들링 : 클릭,change, onload, ajax, setter, getter 함수,api 연동) -data전송, 통신
+	$(function() { 
+	
+		$("#address_btn").postcodifyPopUp({	//도로명 주소 api 연결
+			insertPostcode5 : "#addr",
+			insertAddress : "#addr2"
+		});
+		
+		
+		//버튼 클릭시 상속함수 호출하는 법
+		$("#btn").click(function () {
+			var $a = "이지유";
+			$.box1($a);
+		});
+		
+		//java로 치면 getter역할 값 받기
+		$.fn.abc = function () {
+			var $b = 10;
+			return $b;
+		}		
+		console.log($.fn.abc());
+		
+		//setter 역할 setter같은거 여러개 만들기
+		$.extend({		// extend 함수를 모아놓은 그룹을 extend
+			box1: function($name) {
+				console.log($name);
+			},
+			box2: function () {
+				console.log("box2");
+			}
+		});
+		$.box2();
+		
+		$("#f").submit(function(){
+			//this.method = "POST";
+			//this.action = "./index10.do";
+			//this.enctype = "application/x-www-form-urlencoded";
+			return true;
+		});
+		
+		
+	})
+	
+
+</script>
+</head>
+<body>
+<input type = "button" id = "btn" value = "click"><br><br>
+<form id="f" name="f" method="POST" action="./index10.do">
+<input type="text" name="addr" id="addr" maxlength="5" readonly><br>
+<input type="text" name="addr2" id="addr2" style="width:300px;" readonly><br>
+<input type="text" name="addr3" id="addr3" style="width:300px;" placeholder = "상세주소를 입력해주세요."><br>
+<input type="button" id = "address_btn" value = "주소검색">
+<input type="submit" value = "회원가입"> 
+</form>
+</body>
+</html>

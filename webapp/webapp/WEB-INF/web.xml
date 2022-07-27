@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>webtest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>webtest</servlet-name> <!-- 별칭(닉네임) -->
+  	<servlet-class>test.first</servlet-class> <!-- 패키지.class명 -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>webtest</servlet-name>
+  	<url-pattern>/first.do</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>webtest2</servlet-name> 
+  	<servlet-class>test.index4</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>webtest2</servlet-name>
+  	<url-pattern>/index4.do</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+      <servlet>
+  	<servlet-name>webtest3</servlet-name> 
+  	<servlet-class>test.index5</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>webtest3</servlet-name>
+  	<url-pattern>/index5.do</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>webtest4</servlet-name> 
+  	<servlet-class>test.index7</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>webtest4</servlet-name>
+  	<url-pattern>/index7.do</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>login2</servlet-name> 
+  	<servlet-class>test.index8</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login2</servlet-name>
+  	<url-pattern>/index8.do</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+    
+  <servlet>
+  	<servlet-name>address2</servlet-name> 
+  	<servlet-class>test.index10</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>address2</servlet-name>
+  	<url-pattern>/index10.do</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>ajax1</servlet-name> 
+  	<servlet-class>test.index11</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ajax1</servlet-name>
+  	<url-pattern>/index11</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+     <servlet>
+  	<servlet-name>app1</servlet-name> 
+  	<servlet-class>test.app</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>app1</servlet-name>
+  	<url-pattern>/app</url-pattern> <!-- 자바 파일을 url경로 파일 변경 설정 -->
+  </servlet-mapping>
+  
+</web-app>

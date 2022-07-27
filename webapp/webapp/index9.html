@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>jQuery AJAX 3일차(중급문법)- 확장 함수</title>
+<script src = "./jquery.js"></script>
+<script>
+//제이쿼리에 변수를 선언해도 자바스크립트에 새로운 변수를 생성하면 덮어씌워진다.
+
+	const $c = "홍길동";	//자바스크립트 전역변수 
+	
+	$(function () {
+		const $c = "테스트" // 제이쿼리 전역변수 
+		
+		$("#btn").click(function() {
+			abc(); //자바스크립트 함수 호출
+			//해당 자바 스크립트 함수로 전달시 jquery에서 처리하는 변수값에 대한 적용사항이 전달되지 않음
+			$.fn.abc();
+		})
+		
+		$.fn.abc = function() {
+			console.log("확장함수");
+			abc(); //jquery에서 자바스크립트 abc호출함
+		}
+		$.fn.bbb = function() {
+			console.log($c);
+		}
+		
+		//var $c = "홍길동2"; // 위에 선언했는데 또 변수 선언하면 에러 : c is already declared 
+		function abc(w) {
+			console.log($c);
+			console.log("test");
+			$.fn.bbb(); // 자바스크립트에서 제이쿼리 확장 함수 호출 가능
+		}
+		
+	});
+	
+	//제이쿼리에 함수를 만들고 제이쿼리 밖에서 함수를 호출하면 작동하지않는다.당연함. 
+
+</script>
+</head>
+<body>
+<!-- jquery안에 javascript 함수를 바로 호출하지 못함. 하지만 제이쿼리를 거쳐서 호출하면 가능함  -->
+<input type ="button" value = "test" onclick ="abc();"> <!-- 제이쿼리 안에 있기때문에 제이쿼리 밖에서 단독 호출 불가 -->
+<input type ="button" value = "test2" id = "btn">
+<input type ="button" value = "test3" onclick ="$.fn.abc();"> <!-- 제이쿼리 안에 있어도 $.fn.abc() => 제이쿼리(fn)안에 abc를 호출해라 라고 호출하면 작동함 -->
+</body>
+</html>

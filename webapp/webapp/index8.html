@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>ajax 3일차 form(submit+post)</title>
+<script src = "./jquery.js"></script> 
+<script>
+
+//jquery는 아이디,class를 사용합니다
+//javascript는 name,id
+
+
+	$(function (){
+		$("#btn").click(function() {
+			var $m = $("#mid").val();
+		})
+		
+		$("#f").submit(function() {	//submit은 form id를 적용해야한다. submit은 post만 가능하다.
+			var $m = $("#mid").val();
+			if($m == ""){
+				alert("아이디를 입력하세요.");
+				return false;
+			}
+			else{
+				//$(this).submit();
+				return true;
+			}
+		})
+		
+		
+	});
+
+</script>
+</head>
+<body>
+<form name ="f" id ="f" method = "post" action = "./index8.do" >
+	<input type = "text" name = "mid" id = "mid">
+	<input type = "submit" value = "전송">
+	<input type = "button" value = "확인" id = "btn">
+</form>
+</body>
+</html>

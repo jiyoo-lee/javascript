@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>jQuery AJAX 3일차(중급문법)- 확장 함수2 - ajax</title>
+<script src = "./jquery.js"></script>
+<script>
+$(function() {
+	
+	$("#btn").click(function() {
+		var $mid = $("#mid").val();	//id mid값을 가져옴
+		var $key = "1234561";	//보안key
+			
+		/*java backend 사항은
+		dataType이 있을 경우와 없을 경우가 발생합니다.
+		없을 경우는 dataType을 text or json 또는 명시하지 않습니다.
+		단, url에 dataType이 있을 경우엔 그 확장자를 따라서 dataType을 설정해준다.*/
+		
+		$.ajax({
+			url:"./index11",	/*전송 경로*/
+			data:{mid:$mid,key:$key},	/* 파라미터 */
+			catch:false,	/*데이터 갱신사항*/
+			type:"GET",		/*post, get*/
+			dataType:"text",	//url 파일확장자가 없어서 text로 함.
+			
+			success:function(data) {	//js에서 response와 같은 의미 (전송이 성공했을경우)
+				console.log(data);
+			},
+			error:function() {   //(전송이 실패했을 경우)
+				console.log("통신오류");
+			}
+			
+		});
+		
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<div>
+ID : <input type = "text" id="mid">
+<input type = "button" value = "전송" id="btn"><br>
+</div>
+</body>
+</html>
