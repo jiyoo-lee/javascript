@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220728_JQuery 2일차 back에서 배열로 값 받기 + post 전송</title>
+<script src = "./js/jquery.js"></script>	<!-- 항상 가장 상단에 있어야 함 -->
+<script src = "./js/jquery-ui.js"></script>
+<link rel = "stylesheet" type="text/css" href="./js/jquery-ui.css"></link>
+<script>
+	
+	$(function() {
+		$("#btn").click(function() {
+			let $nm = $("#username").val();
+			
+			if($nm == ""){
+				alert("사용자 이름을 입력하세요.");
+			}
+			else{
+				$.fn.postdata($nm);
+			}
+			
+		});
+		
+		$.fn.postdata = function($nm) {
+			$.ajax({
+				url: "./test2.do",
+				catch: false,
+				type: "POST",
+				dataType: "text",
+				data: {user_name : $nm},
+				success: function($data) { 
+					if($data != "error"){
+					var $parse = JSON.parse($data);
+					console.log($parse["list"][0]);
+					console.log($parse["list"][1]);
+					
+// 					console.log($data["list"]); //datatype="json"으로 변경했을때
+					}
+					else{
+						alert("해당 사용자는 가입자가 아닙니다.");
+					}
+				},
+				error: function () {
+					console.log("통신오류");
+				}
+			});
+		}
+	});
+
+
+</script>
+</head>
+<body>
+<input type = "text" id="username" class = "ui-widget">
+<input type = "button" id="btn" value = "검색" class = "ui-button">
+</body>
+</html>
