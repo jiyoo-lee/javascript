@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220729_ 금요일 ajax 복습 및 응용문제1</title>
+<script src = "./js/jquery.js"></script>
+<script>
+
+//location으로는 보내면 끝(페이지 이동이 있기때문에)
+
+	$(function() {
+		$("#data_post").click(function() {
+			var $a = $("#data").val();
+			var $b = $("#data2").val();
+			var $c = $("#data3").val();
+			location.href = "./ex1.do?cal="+$a + "&cal2=" + $b + "&job=" +$c;
+		});
+
+		
+	});
+
+	function data_post() {
+		var a = document.getElementById("data").value;
+		var b = document.getElementById("data2").value;
+		location.href = "./ex1.do?cal="+a+ "&cal2="+b;
+	}
+
+	
+	
+	
+	
+</script>	
+</head>
+<body>
+<!-- backend : cal로 parameter 값 전송 -->
+<input type = "text" id="data"> <br>
+<input type = "text" id ="data2"> <br>
+<input type = "button" value="js" onclick = "data_post();">
+<input type = "button" value="jq" id="data_post">
+
+
+<!-- 응용문제 : 직업군을 선택하여 location으로 전달하는 형태 
+출력파트 :  html 선택하신 직업군은 xxx입니다. -->
+<p>직업을 선택해주세요.</p>
+
+<select id = "data3">
+	<option value = "">[직업군을 선택하세요.]</option>
+	<option value = "학생">학생</option>
+	<option value = "주부">주부</option>
+	<option value = "회사원">회사원</option>
+	<option value = "프로그래머">프로그래머</option>
+	<option value = "기타">기타</option>
+</select>
+
+
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220729_ 금요일 ajax 복습 및 응용문제4(get) 인증번호</title>
+<script src = "./js/jquery.js"></script>
+<script>
+	
+	//JQuery 
+	$(function() {
+		$("#telcheckq").click(function() {
+			
+			var $tel1 = $("#tel1").val();
+			var $tel2 = $("#tel2").val();
+			var $tel3 = $("#tel3").val();
+			
+			// == var $tel = $("#tel1").val()+$("#tel2").val()+$("#tel3").val();
+			var $tel = $tel1 + $tel2 + $tel3;
+			
+		$.ajax({
+			url: "./ex4.do",
+			data:{usertel:$tel},
+			Type: "GET",
+			dataType:"text",
+			cache: false,
+			success: function($data) {
+				console.log($data);
+				
+				if($data == ""){
+					alert("sms 서버 오류 발생으로 잠시 후 다시 시도해주세요.");
+				}
+				else{
+					$("#security").fadeIn();
+					
+					$("#scokq").click(function() {
+						var security = $("#scnum").val();
+						
+						if(security == $data){
+							alert("인증 성공하였습니다.");
+						}
+						else{
+							alert("인증번호를 다시 입력해주세요.");
+						}
+					});
+				}
+				
+			},
+			error: function() {
+				console.log("통신오류");
+			}
+		});
+		
+			
+		});
+		
+		
+		
+	});
+	
+	
+	//자바스크립트
+	let number;
+	
+	
+	function telcheck() {
+		var tel1 = document.getElementById("tel1").value;
+		var tel2 = document.getElementById("tel2").value;
+		var tel3 = document.getElementById("tel3").value;
+		var tel = tel1+tel2+tel3;
+		ajax(tel);
+	}
+	
+	function ajax(tel) {
+		let pm;
+		
+		function wck() {
+			
+			if(window.XMLHttpRequest)
+				return new XMLHttpRequest();
+				}			
+		function aget() {
+			if(pm.readyState == XMLHttpRequest.DONE && pm.status == 200){
+				console.log(this.response);
+				if(this.response == null || this.response == ""){
+					console.log("SMS 서버 오류");
+				}
+				else{
+					number = this.response;
+					document.getElementById("security").style.display ="block";	
+				}
+			}
+			else if(pm.status == 404){
+				console.log("통신오류");
+			}
+		}
+		pm = wck();
+		pm.onreadystatechange = aget; 
+		pm.open("GET","./ex4.do?usertel="+tel,true);
+		pm.send();
+	}
+	
+	function scok() {
+		var u = document.getElementById("scnum").value;
+		if(u == number){
+			alert("인증이 확인되었습니다.");
+		}
+		else{
+			alert("인증번호를 다시 확인해주세요.");
+		}
+	}
+	
+	
+</script>
+</head>
+<body>
+<input type = "text" id="tel1" maxlength="3"> -
+<input type = "text" id="tel2" maxlength="4"> -
+<input type = "text" id="tel3" maxlength="4">
+<input type = "button" value="인증번호js" onclick="telcheck();">
+<input type = "button" value="인증번호jq" id="telcheckq">
+
+<div id ="security" style ="display:none;">
+	<input type ="text" maxlength="5" placeholder="인증번호 다섯자리" id="scnum">
+	<input type ="button" value="인증하기js" onclick="scok();">
+	<input type ="button" value="인증하기jq" id="scokq">
+</div>
+
+
+</body>
+</html>

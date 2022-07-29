@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220729_ 금요일 ajax 복습 및 응용문제2</title>
+<script src = "./js/jquery.js"></script>
+<script>
+
+	$(function() {
+		$("#members").click(function() {
+			$("#f").submit();
+		});
+	});
+	
+	function members2() {
+		f.submit();
+	}
+
+</script>
+</head>
+<body>
+<form name = "f" id = "f" method = "post" action = "./ex2.do" enctype = "application/x-www-form-urlencoded">
+아이디 :<input type = "text" name = "mid" id = "mid"><br>
+패스워드 : <input type = "password" name = "mpass" id = "mpass"><br>
+[성별]<br>
+<input type = "radio" name="msex" value="M">남성
+<input type = "radio" name="msex" value="W" checked>여성
+[서비스 수신여부]<br>
+SMS 수신여부:<input type ="checkbox" name = "sms" value ="Y">
+<input type = "button" value = "JS" onclick = "members2();">
+<input type = "button" value = "JQ" id="members">
+</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220728_JQuery 2일차 form 결제시스템 응용</title>
+<script src = "./js/jquery.js"></script>	<!-- 항상 가장 상단에 있어야 함 -->
+<script src = "./js/jquery-ui.js"></script>
+<link rel = "stylesheet" type="text/css" href="./js/jquery-ui.css"></link>
+<script>
+	$(function () {
+		$("#pay").click(function() {
+			var $ea = $(".waytopay").length;
+			//console.log($ea);
+			
+			for(var $i =1; $i<=$ea; $i++){
+				if($("#select"+$i).is(":checked") == true){
+					
+					if($("#select"+$i).val() != "도서상품권"){
+						f.method = "POST";
+						f.action = "test4.do";
+						f.enctype = "application/x-www-form-urlencoded";
+						f.submit();
+					}
+					else{
+						alert("해당 결제사항은 시스템 점검 중입니다.");
+						return false;
+					}
+				}
+			}
+		})
+	});
+
+</script>
+<style>
+
+	.background{
+		background-color: ligthgray;
+		height: auto;
+		width: 200px;
+		border: 1px solid black;
+	}
+</style>
+</head>
+<body>
+<form name = "f" id = "f">
+<div class = "background">
+<input type = "radio" name="select" id="select1" value="신용카드" class ="waytopay" checked= "checked">신용카드<br>
+<input type = "radio" name="select" id="select2" value="무통장입금" class ="waytopay">무통장입금<br>
+<input type = "radio" name="select" id="select3" value="계좌이체" class ="waytopay">계좌이체<br>
+<input type = "radio" name="select" id="select4" value="도서상품권" class ="waytopay">도서상품권<br>
+<input type = "radio" name="select" id="select5" value="휴대폰결제" class ="waytopay">휴대폰결제<br>
+<input type = "button" value="결제하기" id="pay">
+</div>
+</form>
+</body>
+</html>

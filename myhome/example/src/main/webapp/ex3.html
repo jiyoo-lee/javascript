@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>20220729_ 금요일 ajax 복습 및 응용문제3(get)</title>
+<script src = "./js/jquery.js"></script>
+<script>
+	$(function() {
+		
+		$("#click").click(function () {
+			
+		var $a = $("#mid").val();
+		var $b = $("#mpass").val();
+		
+		if($a == "" || $b == ""){
+			alert("아이디 혹은 비밀번호를 입력하세요.");
+		}
+		else{
+			$("#f").submit();
+		}
+	})
+		
+});
+
+	function login() {
+		var a = document.getElementById("mid").value;
+		var b = document.getElementById("mpass").value;
+		
+		if(a == "" || b == ""){
+			alert("아이디 혹은 비밀번호를 입력하세요.");
+		}
+		else{
+			f.submit();
+		}
+	}
+
+
+</script>
+</head>
+<body>
+<form name = "f" id = "f" method = "GET" action = "ex3.do">
+아이디: <input type = "text" name = "mid" id = "mid"><br>
+비밀번호: <input type = "password" name = "mpass" id = "mpass"><br>
+	<input type = "button" value="js" onclick ="login();">
+	<input type = "button" value="jq" id = "click">
+	
+</form>
+<div>
+
+
+</div>
+</body>
+</html>
