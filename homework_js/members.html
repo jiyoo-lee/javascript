@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>재시험</title>
+ 	<script src="./Jquery.js" ></script>
+    <link rel="stylesheet" href="./join.css">
+    <script>
+ 
+    $(function () {
+		
+    	$("#joinbtn").click(function() {
+    		var $isnotfull = false;
+    		for(var $i = 0; $i <= $(".box").length; $i++){
+    			if($(".box").eq("$i").val()==null && $(".box").eq($i).val()==""){
+    				alert("모든 사항을 기입하셔야 회원가입이 진행됩니다.")
+					$isnotfull = true;
+    				break;
+    			}			
+    		}
+    		if(!$isnotfull){
+    			alert("회원가입이 완료되었습니다.");
+    		}
+    		
+		});
+	});
+    
+    function openPopup() {
+		var popup = window.open("./popup.html","도로명주소","width=1000px, height=1000px, scrollbars=yes");
+	}
+    
+    
+    </script> 
+</head>
+<body>
+        <div class="joinContainer">
+            <h2 class="joinTit">회원가입</h2>
+            <div class="joinWarp">
+                <dl>
+                    <dt>아이디</dt>
+                    <dd class="input_st1">
+                        <input type="text" placeholder="4~16자 까지 입니다." maxlength="16" id = "idbox" class = "box">
+                        <span class="joinID"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호</dt>
+                    <dd class="input_st1">
+                        <input type="password" placeholder="4~16자 까지 입니다." maxlength="16" id="pwbox" class = "box">
+                        <span class="joinPw1"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호확인</dt>
+                    <dd class="input_st1">
+                        <input type="password" maxlength="16" id="pwckbox" class ="box">
+                        <span class="joinPw2"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>이름</dt>
+                    <dd class="input_st1">
+                        <input type="text" maxlength="20" id="namebox" class ="box">
+                        <span class="joinName"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>닉네임</dt>
+                    <dd class="input_st1">
+                        <input type="text" placeholder="사용할 닉네임을 입력하세요" id="nicknamebox" class ="box">
+                        <span class="joinNic"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>E-mail</dt>
+                    <dd class="input_st1">
+                        <input type="text" placeholder="예) example@naver.com" id="emailbox" class ="box">
+                        <span class="joinEmail"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>전화번호</dt>
+                    <dd class="input_st2">
+                        <input type="text" maxlength="3" id="telbox1" class ="box"><span>-
+                        </span><input type="text" maxlength="4" id="telbox2" class ="box"><span>-
+                        </span><input type="text" maxlength="4" id="telbox3" class ="box">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>휴대폰번호</dt>
+                    <dd class="input_st2">
+                        <input type="text" maxlength="3" id="celbox1" class ="box"><span>-
+                        </span><input type="text" maxlength="4" id="celbox2" class ="box"><span>-
+                        </span><input type="text" maxlength="4" id="celbox3" class ="box">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>주소</dt>
+                    <dd class="input_st3">
+                        <input type="text" placeholder="우편번호" readonly>
+                        <span class="joinHome"></span>
+                        <input type="button" value="주소 검색" id="searchaddr" onclick="openPopup();">
+                    </dd>
+                    <dd class="input_st1">
+                        <input type="text" maxlength="60" placeholder="도로명주소" readonly>
+                    </dd>
+                    <dd class="input_st1">
+                        <input type="text" maxlength="60" placeholder="상세주소" id="detailaddr" class ="box">
+                    </dd>
+                    <dd class="input_st1 refer">
+                        <input type="text" placeholder="참고항목" disabled>
+                    </dd>
+                </dl>
+            </div>
+            <div class="buttonBox">                   
+                    <input class="joinBtn" type="button" value="회원가입" id="joinbtn" class ="box">
+                    <input class="cancelBtn" type="button" value="취소">
+            </div>
+        </div>  
+
+</body>
+</html>
