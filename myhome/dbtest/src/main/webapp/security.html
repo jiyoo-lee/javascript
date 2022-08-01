@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge, chrome=1">
+<meta name ="viewport" content="width=device-width,initial-scale=1.0">
+<title>JavaScript 암호화 base64 전송</title>
+<script>
+	
+	function getmethod() {
+		var password = btoa("hong1234");
+		location.href = "./security.do?pw=" + password;
+	}
+</script>
+</head>
+<body>
+<input type = "button" value = "전송" onclick ="getmethod();">
+</body>
+</html>
