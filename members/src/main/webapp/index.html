@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>로그인</title>
+<script>
+
+	function login() {
+		if(f.userid.value == ""){
+			alert("아이디를 입력하세요");
+			return false;
+		}
+		else if(f.userpw.value==""){
+			alert("비밀번호를 입력하세요");
+			return false;
+		}
+		else{
+			f.method = "POST";
+			f.action = "./login.do";
+			f.enctype = "application/x-www-form-urlencoded";
+			f.submit();
+		}
+	}
+
+
+</script>
+<style>
+
+	.div_login{
+		border: 2px solid gray;
+		width: 500px;
+		padding: 10px;
+		height: 150px;
+		line-height: 30px;
+		text-align: center;
+	}
+
+	.font:hover{
+		background-color: lightgray;
+	}
+
+</style>
+</head>
+<body>
+<form name = "f" id = "f" onsubmit="return login();">
+<div class= "div_login">
+<input type = "text" name = "userid" placeholder = "아이디를 입력하세요."><br>
+<input type = "password" name = "userpw" placeholder = "비밀번호를 입력하세요."><br>
+<input type = "submit" value = "로 그 인"><br>
+<a href="./join.html"><font size="2px;" class="font">[회원가입]</font></a><br>
+<a href="./pass_search.html"><font size="2px;" class="font">[아이디 및 패스워드 찾기]</font></a>
+</div>
+</form>
+</body>
+</html>
