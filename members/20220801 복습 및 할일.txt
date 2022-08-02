@@ -1,0 +1,43 @@
+
+create table 테이블명(
+    필드명 타입,
+    필드명 타입
+PRIMARY KEY(필드명)
+);
+
+create table shopmember (
+ suser char(30),
+ spassword char(50),
+ primary key(suser)
+);
+
+data1
+
+insert into shopmember values("hong","a123456");
+insert into shopmember values("kim","b12345");
+insert into shopmember values("lee", "lee123456");
+
+
+db저장
+자동증가index
+고객명
+아이디
+패스워드
+이메일
+가입일자
+적립금
+
+
+create table joinmember(
+mnumber int(10) not null auto_increment,
+mnm varchar(20) not null,
+mid varchar(30) not null,
+mpw varchar(20) not null,
+memail varchar(50) not null,
+mdate datetime not null default "0001-01-01 00:00:00",
+mpoint char(20) not null,
+primary key(mnumber)
+);
+
+ ALTER TABLE joinmember MODIFY COLUMN mdate datetime AFTER mpoint;
+ALTER TABLE joinmember CHANGE mnumber midx int(10) not null auto_increment;

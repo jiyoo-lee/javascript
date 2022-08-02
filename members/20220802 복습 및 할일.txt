@@ -1,0 +1,45 @@
+[update시 주의사항 ex : Point]
+
+기존 값을 먼저 확인해야함(select)
+기존 값 + 수정 값(update)
+
+[update시 주의사항 ex : email]
+
+기존 값을 먼저 확인해야함(select)
+입력값이랑 기존값이 같을 경우 변경하지 않음
+
+1. 인덱스 midx
+2. 아이디 mid
+3. 패스워드 mpass (암호화) -base64
+4. 고객명 mname
+5. 이메일 memail
+6. 연락처 mtel
+[나눠서 각각 설계해야함]
+7. 우편번호 mpost
+8. 주소2 maddr
+9. 주소3 maddr_dtc
+10. 가입일자 mindate
+11. 탈퇴일자 (null) moutdate
+12. 휴면사항(enum) muse (Y,N)
+ 
+[timestamp version]
+mindate timestamp not null default current_timestamp;
+
+
+create table person(
+midx int(2) not null auto_increment,
+mid varchar(50) not null,
+mpass varchar(80) not null,
+mname varchar(50) not null,
+memail varchar(100) not null,
+mtel varchar(20) not null,
+mpost char(20) not null,
+maddr text not null,
+maddr_dtc text not null,
+mindate datetime not null default '0001-01-01 01:01:01',
+moutdate datetime default '0001-01-01 01:01:01',
+muse ENUM('Y','N') not null,
+primary key(midx,mid)
+);
+
+insert into person values('0','hong','YTEyMzQ1Ng==','홍길동','hong@nate.com','01072867211','01234','서울특별시','21-2','2022-08-02 12:40:05','0001-01-01 01:01:01','N');
