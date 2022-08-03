@@ -1,0 +1,62 @@
+
+1. join.html
+2. join.js
+
+1.
+// 가입창
+// 구현기능 : 가입취소, 아이디중복체크(ajax), 주소찾기
+
+2. 
+// js
+// 구현기능 : 공백란 입력, 중복확인 체크, 이메일 정규식 확인, 휴대폰 번호 확인, 휴대폰번호 자릿수 확인
+// method: post
+// action : ./joinok.do 
+
+3. dbconfig
+
+//구현기능 : Mysql 연결 
+
+4. 
+
+
+local에서 테스트 -> cafe24 url
+cafe24에 확인 -> localhost:3306
+[개발 시 DB접속 부분]
+외부 서버를 이용해서 DB에 접속하게 합니다.
+1.hosting 서버에 DB 외부 접속을 할 수 있도록 IP를 설정
+2. DB환경설정 파일을 JSP,Servlet 셋팅
+3. DB 연결부분을 확인하게 됩니다.
+4. 모든 프로세서를 작성이 완료되었을 경우 DB 환경 설정에서 외부 접속 부분을 localhost로 변경 또는 
+DB서버가 별도로 있을 경우 해당 아이피 또는 도메인으로 변경하여 WAR 압축 후 FTP 전송하게 됩니다.
+
+reload
+평점 value ->5 4 3 2 1이런식으로
+
+[project 간편 리뷰 프로세서 만들기]
+규칙 : 
+1.cafe24에 있는 DB를 활용
+2. 순서: DB 설계(기획서 보면서 테이블 설계 글을 언제 썼는지 등)
+3. HTML 작성 
+4. JS or JQ (단, ajax 필요 없음)
+5. 무조건 form - post로 전송
+6. servlet을 제작 controller
+ -DBconnect - 클래스 별도(DB Connect module)
+ -sql 문법 들어가는 class  별도로 만들기(module 별도)
+7. 입력완료 후 스크립트 처리 alert
+ - "리뷰 작성이 완료되었습니다." -> 다시 원래 리뷰 작성하는 페이지로 이동
+ - "올바른 값이 아닙니다." -> 리뷰 작성 페이지로 다시 이동 
+8. DB에 값이 저장되었는지 확인 
+
+
+create table pd_review(
+p_idx int(5) not null auto_increment,
+p_nm varchar(50) not null,
+p_product varchar(100) not null,
+p_score int(3) not null,
+p_content varchar(500) not null,
+p_indate datetime not null default '0001-01-01 00:00:00',
+p_deldate datetime default '0001-01-01 00:00:00',
+primary key(p_idx, p_nm)
+);
+
+insert into pd_review values('0','이지유','텀블러','5','내구성이 좋습니다','2022-08-03 15:32:10','default');
