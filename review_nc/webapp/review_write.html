@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<script src = "./js/jquery.js"></script>
+<title>상품평 작성하기</title>
+<script>
+	$(function() {
+		
+		$("#upload").click(function() {
+			if($("#userName").val() == ""){
+				alert("고객명을 입력해주세요.");
+			}
+			else if($("#productName").val() == ""){
+				alert("상품명을 입력해주세요.");	
+			}
+			else if($("#content").val() == ""){
+				alert("상품평을 입력해주세요");
+			}
+			else{
+				if(confirm("리뷰를 등록하시겠습니까?")){
+					f.method= "POST";
+					f.action ="./afterWrite.do";
+					f.enctype = "multipart/form-data";
+					f.submit();
+				}
+			}
+		});
+		
+		$("#cancel").click(function() {
+			if(confirm("작성을 취소하시겠습니까?")){
+				$("#userName").val('');
+				$("#productName").val('');
+				$("#content").val('');
+			}
+		})
+	});
+
+</script>
+</head>
+<body>
+<form name ="f" id="f">
+<p><b>[상품 리뷰 작성 페이지]</b></p>
+고객명 <input type ="text" name = "userName" id="userName"> <br>
+상품명 <input type ="text"  name = "productName" id="productName"> <br>
+평점 <input type = "radio" name="ra" id ="s5" value ="5" checked>5점 <input type = "radio" name="ra" id ="s4" value ="4">4점 <input type = "radio" name="ra" id ="s3" value ="3">3점 <input type = "radio" name="ra" id ="s2" value ="2">2점 <input type = "radio" name="ra" id ="s1" value ="1">1점
+<br>
+내용 <textarea name = "content" id="content" style = "height: 300px; width: 300px; overflow-y:scroll;"> </textarea><br><br>
+파일첨부 <input type = "file" name="file" accept="image.*" id="filename"><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" id="upload" value="작성완료">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" id="cancel" value="작성취소">
+</form>
+</body>
+</html>
