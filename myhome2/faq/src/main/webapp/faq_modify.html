@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>[FAQ] 관리자 페이지</title>
+<script>
+
+	function showList() {
+		
+		f.method = "POST";
+		f.action = "./faq_list.html";
+		f.enctype = "application/x-www-form-urlencoded";
+		f.submit();
+	}
+	
+	function editFAQ() {
+		var question = document.getElementById("question").value;
+		var answer = document.getElementById("answer").value;
+		var select = document.getElementById("select").value;
+		if(question == "" || question == null || answer == "" || answer == null || select == "카테고리를 선택하세요"){
+			alert("모든 사항을 입력 및 카테고리 선택을 하시기바랍니다.");
+		}
+		else{
+			f.method = "POST";
+			f.action = "./RetrieveFaq.do";
+			f.enctype = "application/x-www-form-urlencoded";
+			f.submit();
+		}
+	}
+
+
+</script>
+<style>
+
+ .write_div{
+ 
+ 	border: 2px solid gray;
+ 	width: 800px;
+ 	height: 600px;
+ 	text-align: center;
+ }
+
+</style>
+</head>
+<body>
+<div class = "write_div">
+<form name="f" id ="f">
+카테고리 <select id = "select" name="select">
+			<option>카테고리를 선택하세요</option>
+			<option value="shipping">배송문의</option>
+			<option value="exchange/refund">반품/교환/환불</option>
+			<option value="service">회원서비스</option>
+			<option value="safe">안전거래</option>
+		</select>
+		리스트출력여부<input type="checkbox" id="check" name="check"><br><br>
+글쓴이 <input type = "text" name="writer" id="writer" value="관리자" readOnly><br><br>
+질문내용 <input type ="text" name="question" id="question"><br><br>
+답변내용<br>
+<textarea name="answer" id="answer" style=" width: 500px; height:300px; resize : none;"></textarea><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" value ="목록" onclick="showList();">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" value ="FAQ수정" onclick="editFAQ();">
+</form>
+</div>
+</body>
+</html>

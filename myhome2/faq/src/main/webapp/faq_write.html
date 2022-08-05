@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>[FAQ] 관리자 페이지</title>
+<script>
+
+	function show() {
+			location.href = "./faq_list.html";
+		}
+	
+	function cancel() {
+		if(confirm("정말 작성을 취소하시겠습니까?")){
+			document.getElementById("question").value ="";
+			document.getElementById("answer").value ="";
+			alert("작성이 취소되었습니다.");
+		}
+	}
+	
+	function complete() {
+		var question = document.getElementById("question").value;
+		var answer = document.getElementById("answer").value;
+		var select = document.getElementById("select").value;
+		if(question == "" || question == null || answer == "" || answer == null || select == "not"){
+			alert("모든 사항을 입력 및 카테고리 선택을 하시기바랍니다.");
+		}
+		else{
+			f.method = "POST";
+			f.action = "./RetrieveFaq.do";
+			f.enctype = "application/x-www-form-urlencoded";
+			f.submit();
+		}		
+	}
+
+</script>
+<style>
+
+ .write_div{
+ 
+ 	border: 2px solid gray;
+ 	width: 800px;
+ 	height: 600px;
+ 	text-align: center;
+ }
+ 
+
+</style>
+</head>
+<body>
+<div class="write_div">
+<input type ="hidden" name="faq_view" value="Y">
+<form name="f" id ="f">
+<p><b>[FAQ 기입]</b></p>
+카테고리 <select id = "select" name="select">
+			<option value ="not">카테고리를 선택하세요</option>
+			<option value="shipping">배송문의</option>
+			<option value="exchange/refund">반품/교환/환불</option>
+			<option value="service">회원서비스</option>
+			<option value="safe">안전거래</option>
+		</select><br><br>
+글쓴이 <input type = "text" name="writer" id="writer" value="관리자" readOnly><br><br>
+질문내용 <input type ="text" name="question" id="question" style= "width: 350px;" placeholder ="질문을 기입해주세요."><br><br>
+답변내용<br>
+<textarea name="answer" id="answer" style=" cols: 100; rows:10; width: 500px; height:300px; resize : none;" placeholder ="답변을 기입해주세요."></textarea><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" value ="목록보기" onclick="show();">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" value ="입력취소" onclick="cancel();">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type ="button" value ="작성완료" onclick="complete();">
+</form>
+</div>
+</body>
+</html>
