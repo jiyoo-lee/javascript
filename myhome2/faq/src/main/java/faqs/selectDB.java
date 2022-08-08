@@ -65,7 +65,6 @@ public class selectDB {
 	public ArrayList<selectDB> viewdata() throws ClassNotFoundException, SQLException{
 		
 		ArrayList<selectDB> list = new ArrayList<>();
-		selectDB ss = new selectDB();
 		DBConnector db = new DBConnector();
 		Connection con = db.connection();
 		String sql = "select * from FAQ order by indate desc";
@@ -74,6 +73,7 @@ public class selectDB {
 		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {
+			selectDB ss = new selectDB();
 			ss.setF_idx(rs.getString("f_idx"));
 			ss.setF_category(rs.getString("f_category"));
 			ss.setF_writer(rs.getString("f_writer"));
@@ -82,7 +82,6 @@ public class selectDB {
 			ss.setIndate(rs.getString("indate"));
 			list.add(ss);
 		}
-		
 		return list;
 	}
 }

@@ -28,4 +28,31 @@
   	<url-pattern>/faq_list.html</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>FAQ3</servlet-name> 
+  	<servlet-class>faqs.del_faq</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>FAQ3</servlet-name>
+  	<url-pattern>/del_faq.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>FAQ4</servlet-name> 
+  	<servlet-class>faqs.faq_view</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>FAQ4</servlet-name>
+  	<url-pattern>/faq_view.html</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+  	<servlet-name>FAQ5</servlet-name> 
+  	<servlet-class>faqs.faq_updateok</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>FAQ5</servlet-name>
+  	<url-pattern>/faq_updateok.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
