@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>[관리자페이지] FAQ</title>
+<script>
+	function admin(number) {
+		
+		if(number == 1){
+			location.href = "./FAQ.do";
+		}
+		else if (number == 2) {
+			var category = document.getElementById("category").value;
+			var question = document.getElementById("question").value;
+			var answer = document.getElementById("answer").value;
+			if(category == null || category == ""){
+				alert("카테고리를 선택해주세요");
+			}
+			else if(question == null || question == ""){
+				alert("질문을 기입해주세요 ");
+			}
+			else if(answer == null || answer == ""){
+				alert("답변내용을 기입해주세요 ");
+			}
+			else {
+				f.method = "POST";
+				f.enctype = "application/x-www-form-urlencoded"
+				f.action = "./FAQ.do";
+				f.submit();
+			}
+		}
+		else {
+			if(confirm("작성한 데이터가 모두 사라집니다. 작성을 취소하시겠습니까?")) {
+				document.getElementById("category").value = "";
+				document.getElementById("question").value = "";
+				document.getElementById("answer").value = "";
+			}
+		}
+		
+	}
+
+</script>
+</head>
+<body>
+<form name ="f" id="f">
+[FAQ 관리자 페이지] <br><br>
+<select id="category" name = "category">
+	<option value="">카테고리를 선택해주세요.</option>
+	<option value="0">배송문의 </option>
+	<option value="1">안전거래 </option>
+	<option value="2">서비스 </option>
+	<option value="3">환불/반품 </option>
+</select><br><br>
+글쓴이<input type="text" value="관리자" name = "writer" readOnly><br><br>
+질문  <input type="text" name="question" id="question" style="width: 350px;"><br><br>
+답변내용<br>
+<textarea name="answer" id="answer" style = "width:400px; height:500px; resize :none;"></textarea><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="목록보기" onclick="admin(1)">
+<input type="button" value= "작성완료" onclick="admin(2)">
+<input type="button" value= "작성취소" onclick="admin(3)">
+</form>
+</body>
+</html>
