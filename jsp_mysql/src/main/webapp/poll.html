@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv ="X-UA-compatible" content = "IE = edge, chrome = 1">
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+<title>설문조사 입력창</title>
+<script>
+
+	function register() {
+		var name = document.getElementById("name").value;
+		var id = document.getElementById("id").value;
+		var tel = document.getElementById("tel").value;
+		var content = document.getElementsByName("poll").value;
+		
+		if(name == "" || id == "" || tel == ""){
+				alert("모든 정보를 입력해주시길 바랍니다.");
+			}
+		else{
+				if(confirm("설문조사에 참여하시겠습니까?")){
+					frm.method = "post";
+					frm.enctype = "application/x-www-form-urlencoded";
+					frm.action = "./pollok.jsp"
+					frm.submit();					
+				}
+		}
+	}
+</script>
+<style>
+
+.li{ float: left;}
+
+</style>
+</head>
+<body>
+<form name="frm" id="frm">
+<div style = "border:1px solid black; width:600px; height: 250px; background-color: lightgray">
+<h1>[가장 어려운 Back-end 과목은?]</h1>
+고객명 <input type ="text" name="name" id="name"><br>
+아이디 <input type ="text" name="id" id="id"><br>
+연락처 <input type ="text" name="tel" id="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="11"><br><br>
+<div style = "margin-left:20px;">
+JAVA<input type ="radio" name="poll" value="1"checked>
+JAVA Servlet<input type ="radio" name="poll" id ="poll" value="2">
+JavaScript<input type ="radio" name="poll" id ="poll" value="3">
+AJAX<input type ="radio" name="poll" id ="poll" value="4">
+JSP<input type ="radio" name="poll" id ="poll" value="5">
+<input type="button" value="설문조사 하기" onclick="register()">
+</div>
+</div>
+</form>
+</body>
+</html>
