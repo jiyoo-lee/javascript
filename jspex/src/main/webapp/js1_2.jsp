@@ -15,6 +15,9 @@
 	Object lv = session.getAttribute("lv");
 	
 	out.print(id+" , "+ mail + " , " + lv);
+	
+	//int sessionTime = session.getMaxInactiveInterval(); 로그인에 사용하지 않고 session 시간을 확인 할 수 있는 메서드
+	//out.print(sessionTime);
 %>
 </body>
 </html>
