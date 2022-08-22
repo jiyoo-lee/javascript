@@ -13,4 +13,27 @@
   <session-config>
   	<session-timeout>60</session-timeout>
   </session-config>
+  
+    <servlet>
+	<servlet-name>mail</servlet-name>
+	<servlet-class>test.mailto</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+	<servlet-name>mail</servlet-name>
+	<url-pattern>/mail/mailto.jsp</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+	<servlet-name>webpage</servlet-name>
+	<servlet-class>test.index</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+	<servlet-name>webpage</servlet-name>
+	<url-pattern>/webpage/index</url-pattern>
+  </servlet-mapping>
+
+  
+  
 </web-app>
