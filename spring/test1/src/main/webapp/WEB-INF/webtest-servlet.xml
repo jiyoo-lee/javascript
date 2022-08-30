@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	https://www.springframework.org/schema/mvc/spring-beans.xsd
+    	https://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+       <!-- admin : 가상의 디렉토리명 (Controller은 가상의 디렉토리로 움직이며 view는 실제 디렉토리로 움직이게 됨) -->
+    <bean id="/index" class="test1.Index"></bean>
+    
+    <!-- Controller와 jsp이름을 동일화 시키는 작업입니다. -->
+    
+    <!-- HTML 출력파트 -->
+    <mvc:resources location="/resource" mapping="/**"></mvc:resources>
+    
+</beans>
